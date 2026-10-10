@@ -4,7 +4,7 @@ import { Outlet } from 'react-router';
 import Footer from '../Components/Footer/Footer';
 const Root = () => {
     return (
-        <div>
+        <div className='bg-gray-100'>
           <div className='mx-auto p-3 max-w-7xl'>
              <Header></Header> 
           </div>

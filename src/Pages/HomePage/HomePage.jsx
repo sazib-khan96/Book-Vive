@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Hero from '../../Components/HeroSection/Hero';
 const HomePage = () => {
     return (
         <div>
-            <h1>This is Home Page</h1>
+           <Hero></Hero>
         </div>
     );
 };
