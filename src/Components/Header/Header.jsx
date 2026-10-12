@@ -22,13 +22,13 @@ const Header = () => {
     <nav className="flex justify-between gap-5 p-3 border-b-1 border-amber-100">
         <span onClick={() => setOpen(!open)} className="md:hidden">
            {
-            open? <X className="text-red-400"></X> : <Menu></Menu>
+            open? <X className="text-red-400 border"></X> : <Menu></Menu>
            }
         </span>
 
         {/* menu items for mobile  */}
-        <div className={`absolute top-[45px] ${open? 'left-0 opacity-100' : '-left-full opacity-0'} transition-all ease-in-out duration-300 px-5 md:hidden`}>
-            <ul className="flex flex-col gap-3 py-4">
+        <div className={`z-50 absolute top-[45px] ${open? 'left-0 opacity-100' : '-left-full opacity-0'} transition-all ease-in-out duration-300 px-5 md:hidden`}>
+            <ul className="flex flex-col gap-3 py-4 w-full ">
             {
                open?  menuItems : ''
             }
@@ -44,7 +44,7 @@ const Header = () => {
       </ul>
 
       {/* button  */}
-      <button>Help</button>
+      <button className="btn ">Help</button>
     </nav>
   );
 };
