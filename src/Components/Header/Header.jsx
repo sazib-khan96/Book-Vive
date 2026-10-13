@@ -1,51 +1,35 @@
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
-
-const navLinks = [
-  { id: 1, title: "Home", path: "/" },
-  { id: 2, title: "About Me", path: "/about" },
-  { id: 3, title: "Projects", path: "/projects" },
-  { id: 4, title: "Skills", path: "/skills" },
-  { id: 5, title: "Contact", path: "/contact" },
-];
-
+import React, { useState } from "react";
+import { NavLink } from "react-router";
+import { Menu,X} from "lucide-react";
 const Header = () => {
+    // menu open close state here 
     const [open,setOpen] = useState(false)
-
-    const menuItems = navLinks.map((link) => (
-          <li>
-            <a href={link.path}>{link.title}</a>
-          </li>
-        ))
+   
   return (
-    // Navlinks
-    <nav className="flex justify-between gap-5 p-3 border-b-1 border-amber-100">
+    <header className="flex justify-between items-center p-3 border-b border-gray-200 md:border-0">
         <span onClick={() => setOpen(!open)} className="md:hidden">
-           {
-            open? <X className="text-red-400 border"></X> : <Menu></Menu>
-           }
+         {
+            open?<X className="text-red-400"></X> :<Menu></Menu> 
+         }
         </span>
-
-        {/* menu items for mobile  */}
-        <div className={`z-50 absolute top-[45px] ${open? 'left-0 opacity-100' : '-left-full opacity-0'} transition-all ease-in-out duration-300 px-5 md:hidden`}>
-            <ul className="flex flex-col gap-3 py-4 w-full ">
-            {
-               open?  menuItems : ''
-            }
-        </ul>
-        </div>
-        <h1 className="hidden md:flex">Logo</h1>
-         
-        {/* menu Items  for desktop */}
-      <ul className="hidden md:flex gap-3">
-        {
-            menuItems
-        }
-      </ul>
-
-      {/* button  */}
-      <button className="btn ">Help</button>
-    </nav>
+        <h1 className="text-2xl text-[#f1990c] font-bold">Orio</h1>
+        {/* desktop  */}
+      <nav className="flex gap-5 justify-center hidden md:flex">
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+      </nav>
+      {/* Mobile  */}
+      {
+        open?
+        <nav className={`flex flex-col absolute top-20 md:hidden`}>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+      </nav> : ''
+      }
+      <button className="my-custom-btn">help</button>
+    </header>
   );
 };
 
